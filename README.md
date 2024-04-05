@@ -15,7 +15,7 @@ With the development of transformer-based large language models (LLMs), they hav
 
 ### Usage
 
-GRIFFIN implementations for different models are in `src/griffin/`, and similar implementations for other architectures can be placed here as well.
+GRIFFIN implementations for different models are in `src/griffin/`, and similar implementations for other architectures can be placed here as well. To evaluate on XSum and CNN/DailyMail summarization tasks, use `src/eval_gen.py`. For LM Eval Harness tasks, use `src/lm_eval.py`.
 
 #### Setup
 
