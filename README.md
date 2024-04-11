@@ -36,7 +36,7 @@ sh scripts/gen/gemma_7b_coqa.sh
 sh scripts/gen/llama2_7b_xsum.sh 
 ```
 
-For many classification settings, the model never enters the generation phase, meaning GRIFFIN will produce the same outputs as the full model. For these, we can simulate generation by treating the input sequence except the last token as the prompt and force the model to use the experts for the class token (decribed in more detail in the paper). This is what `--mode class` will do and should be set for all such classification tasks. Examples can be found in `scripts/class/`:
+For many classification settings, the model never enters the generation phase, meaning GRIFFIN will produce the same outputs as the full model. For these, we can simulate generation by treating the input sequence except the last token as the prompt and force the model to use the experts for the final token (decribed in more detail in the paper). This is what `--mode class` will do and should be set for all such classification tasks. Examples can be found in `scripts/class/`:
 
 ```bash
 sh scripts/class/mistral_7b_boolq.sh 
