@@ -1,6 +1,6 @@
 # GRIFFIN
 
-This repository contains the implementation of GRIFFIN (**G**ating by **R**epetition **I**n **F**eed**f**orward **I**ntermediate **N**eurons), an efficient and effective method to convert LLM feedforward blocks into mixtures of experts instantaneously, presented in ["Prompt-prompted Mixture of Experts for Efficient LLM Generation"](https://arxiv.org/abs/2404.01365).
+This repository contains the implementation of GRIFFIN (**G**ating by **R**epetition **I**n **F**eed**f**orward **I**ntermediate **N**eurons), an efficient method to adaptively and instantaneously prune neurons in LLM feedforward blocks, presented in ["Prompt-prompted Adaptive Structured Pruning for Efficient LLM Generation"](https://arxiv.org/abs/2404.01365).
 
 
 Harry Dong, Beidi Chen, Yuejie Chi
@@ -10,8 +10,7 @@ Carnegie Mellon University
 
 ### Abstract
 
-With the development of transformer-based large language models (LLMs), they have been applied to many fields due to their remarkable utility, but this comes at a considerable computational cost at deployment. Fortunately, some methods such as pruning or constructing a mixture of experts (MoE) aim at exploiting sparsity in transformer feedforward (FF) blocks to gain boosts in speed and reduction in memory requirements. However, these techniques can be very costly and inflexible in practice, as they often require training or are restricted to specific types of architectures. To address this, we introduce GRIFFIN, a novel training-free MoE that selects unique FF experts at the sequence level for efficient generation across a plethora of LLMs with different non-ReLU activation functions. This is possible due to a critical observation that many trained LLMs naturally produce highly structured FF activation patterns within a sequence, which we call flocking. Despite our method's simplicity, we show with 50\% of the FF parameters, GRIFFIN maintains the original model's performance with little to no degradation on a variety of classification and generation tasks, all while improving latency (e.g. 1.25$\times$ speed-up in Llama 2 13B on an NVIDIA L40).
-
+With the development of transformer-based large language models (LLMs), they have been applied to many fields due to their remarkable utility, but this comes at a considerable computational cost at deployment. Fortunately, some methods such as pruning or constructing a mixture of experts (MoE) aim at exploiting sparsity in transformer feedforward (FF) blocks to gain boosts in speed and reduction in memory requirements. However, these techniques can be very costly and inflexible in practice, as they often require training or are restricted to specific types of architectures. To address this, we introduce GRIFFIN, a novel training-free and calibration-free method that selects unique FF experts at the sequence level for efficient generation across a plethora of LLMs with different non-ReLU activation functions. This is possible due to a critical observation that many trained LLMs naturally produce highly structured FF activation patterns within a sequence, which we call flocking. Despite our method's simplicity, we show with 50\% of the FF parameters, GRIFFIN maintains the original model's performance with little to no degradation on a variety of classification and generation tasks, all while improving latency (e.g. 1.29$\times$ and 1.25$\times$ speed-ups in Gemma 7B and Llama 2 13B, respectively, on an NVIDIA L40). 
 
 ### Usage
 
@@ -47,11 +46,11 @@ sh scripts/class/mistral_7b_boolq.sh
 
 If you found this repository helpful in your work, please cite our [paper](https://arxiv.org/abs/2404.01365):
 
-    @misc{dong2024promptprompted,
-      title={Prompt-prompted Mixture of Experts for Efficient LLM Generation}, 
+    @inproceedings{
+      dong2024promptprompted,
+      title={Prompt-prompted Adaptive Structured Pruning for Efficient {LLM} Generation},
       author={Harry Dong and Beidi Chen and Yuejie Chi},
+      booktitle={First Conference on Language Modeling},
       year={2024},
-      eprint={2404.01365},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+      url={https://openreview.net/forum?id=4aqq9xTtih}
     }
